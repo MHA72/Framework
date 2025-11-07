@@ -10,4 +10,12 @@
     <ProjectReference Include="..\SentinelCore.Core\SentinelCore.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Persistence\Configurations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.21" />
+  </ItemGroup>
+
 </Project>
