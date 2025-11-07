@@ -1,16 +1,15 @@
-using SentinelCore.Core.Models;
 using Microsoft.AspNetCore.Http;
-using SentinelCore.Application.Interfaces;
-using SentinelCore.Core.Entities.AuditLog;
+using SentinelCore.Core.Models;
 using SentinelCore.Infrastructure.Persistence;
+using SentinelCore.Application.Interfaces.AuditLog;
 
-namespace SentinelCore.Application.Services;
+namespace SentinelCore.Application.Services.AuditLog;
 
 public class AuditService(AppDbContext context, IHttpContextAccessor http) : IAuditService
 {
     public async Task LogAsync(AuditLogRequest auditLogRequest)
     {
-        var log = new AuditLog
+        var log = new Core.Entities.AuditLog.AuditLog
         {
             ActionType = auditLogRequest.ActionType,
             EntityName = auditLogRequest.EntityName,

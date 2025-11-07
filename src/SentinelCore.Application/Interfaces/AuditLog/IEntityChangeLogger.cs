@@ -1,4 +1,4 @@
-namespace SentinelCore.Application.Interfaces;
+namespace SentinelCore.Application.Interfaces.AuditLog;
 
 public interface IEntityChangeLogger
 {

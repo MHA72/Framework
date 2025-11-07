@@ -1,7 +1,7 @@
 using SentinelCore.Core.Models;
-using SentinelCore.Application.Interfaces;
+using SentinelCore.Application.Interfaces.AuditLog;
 
-namespace SentinelCore.Application.Services;
+namespace SentinelCore.Application.Services.AuditLog;
 
 public class EntityChangeLogger(IAuditService audit) : IEntityChangeLogger
 {
