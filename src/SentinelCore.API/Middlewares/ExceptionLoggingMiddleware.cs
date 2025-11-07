@@ -1,6 +1,5 @@
-using SentinelCore.Application.Interfaces;
-using SentinelCore.Application.Interfaces.AuditLog;
-using SentinelCore.Core.Models;
+using SentinelCore.Core.Models.Request;
+using SentinelCore.Application.Interfaces.AuditLogContract;
 
 namespace SentinelCore.API.Middlewares;
 
@@ -16,14 +15,8 @@ public class ExceptionLoggingMiddleware(RequestDelegate next)
         {
             var request = context.Request;
 
-            var log = new AuditLogRequest
-            {
-                ActionType = "Exception",
-                EntityName = "HttpRequest",
-                EntityId = null,
-                Message = $"Unhandled exception in [{request.Method}] {request.Path}",
-                Exception = ex
-            };
+            var log = new AuditLogRequest(null, ex, $"Unhandled exception in [{request.Method}] {request.Path}",
+                "Exception", "HttpRequest");
 
             await audit.LogAsync(log);
             context.Response.StatusCode = 500;

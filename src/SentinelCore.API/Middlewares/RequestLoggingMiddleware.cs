@@ -1,6 +1,5 @@
-using SentinelCore.Core.Models;
-using SentinelCore.Application.Interfaces;
-using SentinelCore.Application.Interfaces.AuditLog;
+using SentinelCore.Core.Models.Request;
+using SentinelCore.Application.Interfaces.AuditLogContract;
 
 namespace SentinelCore.API.Middlewares;
 
@@ -10,13 +9,8 @@ public class RequestLoggingMiddleware(RequestDelegate next)
     {
         var request = context.Request;
 
-        var log = new AuditLogRequest
-        {
-            ActionType = "Request",
-            EntityName = "HttpRequest",
-            EntityId = null,
-            Message = $"[{request.Method}] {request.Path} from {context.Connection.RemoteIpAddress}",
-        };
+        var log = new AuditLogRequest(null, null,
+            $"[{request.Method}] {request.Path} from {context.Connection.RemoteIpAddress}", "Request", "HttpRequest");
 
         await audit.LogAsync(log);
 

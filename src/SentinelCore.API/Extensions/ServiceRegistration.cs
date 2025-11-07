@@ -1,7 +1,7 @@
 using SentinelCore.Application.Services;
 using SentinelCore.Application.Interfaces;
-using SentinelCore.Application.Interfaces.AuditLog;
-using SentinelCore.Application.Services.AuditLog;
+using SentinelCore.Application.Interfaces.AuditLogContract;
+using SentinelCore.Application.Services.AuditLogService;
 
 namespace SentinelCore.API.Extensions;
 

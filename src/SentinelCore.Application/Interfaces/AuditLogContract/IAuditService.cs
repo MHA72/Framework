@@ -1,6 +1,7 @@
 using SentinelCore.Core.Models;
+using SentinelCore.Core.Models.Request;
 
-namespace SentinelCore.Application.Interfaces.AuditLog;
+namespace SentinelCore.Application.Interfaces.AuditLogContract;
 
 public interface IAuditService
 {

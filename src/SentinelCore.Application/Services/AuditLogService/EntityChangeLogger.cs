@@ -1,20 +1,13 @@
-using SentinelCore.Core.Models;
-using SentinelCore.Application.Interfaces.AuditLog;
+using SentinelCore.Core.Models.Request;
+using SentinelCore.Application.Interfaces.AuditLogContract;
 
-namespace SentinelCore.Application.Services.AuditLog;
+namespace SentinelCore.Application.Services.AuditLogService;
 
 public class EntityChangeLogger(IAuditService audit) : IEntityChangeLogger
 {
-    public async Task LogCreateAsync<T>(T entity) where T : class
-    {
-        await audit.LogAsync(new AuditLogRequest
-        {
-            ActionType = "Create",
-            EntityName = typeof(T).Name,
-            EntityId = GetEntityId(entity),
-            Message = $"رکورد جدید از نوع {typeof(T).Name} ایجاد شد"
-        });
-    }
+    public async Task LogCreateAsync<T>(T entity) where T : class =>
+        await audit.LogAsync(new AuditLogRequest(GetEntityId(entity), null,
+            $"رکورد جدید از نوع {typeof(T).Name} ایجاد شد", "Create", typeof(T).Name));
 
     public async Task LogUpdateAsync<T>(T original, T updated) where T : class
     {
@@ -27,26 +20,16 @@ public class EntityChangeLogger(IAuditService audit) : IEntityChangeLogger
 
             if (oldValue != newValue)
             {
-                await audit.LogAsync(new AuditLogRequest
-                {
-                    ActionType = "Update",
-                    EntityName = typeof(T).Name,
-                    EntityId = GetEntityId(updated),
-                    Message = $"فیلد {prop.Name} تغییر کرد از '{oldValue}' به '{newValue}'"
-                });
+                await audit.LogAsync(new AuditLogRequest(GetEntityId(updated), null,
+                    $"فیلد {prop.Name} تغییر کرد از '{oldValue}' به '{newValue}'", "Update", typeof(T).Name));
             }
         }
     }
 
     public async Task LogDeleteAsync<T>(T entity) where T : class
     {
-        await audit.LogAsync(new AuditLogRequest
-        {
-            ActionType = "Delete",
-            EntityName = typeof(T).Name,
-            EntityId = GetEntityId(entity),
-            Message = $"رکورد از نوع {typeof(T).Name} حذف شد"
-        });
+        await audit.LogAsync(new AuditLogRequest(GetEntityId(entity), null,
+            $"رکورد از نوع {typeof(T).Name} حذف شد", "Delete", typeof(T).Name));
     }
 
     private string? GetEntityId<T>(T entity)

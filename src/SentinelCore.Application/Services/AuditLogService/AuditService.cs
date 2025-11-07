@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Http;
-using SentinelCore.Core.Models;
+using SentinelCore.Core.Models.Request;
 using SentinelCore.Infrastructure.Persistence;
-using SentinelCore.Application.Interfaces.AuditLog;
+using SentinelCore.Application.Interfaces.AuditLogContract;
 
-namespace SentinelCore.Application.Services.AuditLog;
+namespace SentinelCore.Application.Services.AuditLogService;
 
 public class AuditService(AppDbContext context, IHttpContextAccessor http) : IAuditService
 {
