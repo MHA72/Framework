@@ -1,3 +1,4 @@
+using SentinelCore.API.Extensions;
 using Microsoft.EntityFrameworkCore;
 using SentinelCore.Infrastructure.Seed;
 using SentinelCore.Infrastructure.Persistence;
@@ -6,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 
@@ -19,7 +22,7 @@ using (var scope = app.Services.CreateScope())
     db.Database.Migrate();
     DbInitializer.Seed(db);
 }
-
+app.UseCustomMiddlewares();
 app.UseHttpsRedirection();
 
 app.Run();

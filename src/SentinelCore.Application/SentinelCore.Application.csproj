@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SentinelCore.Core\SentinelCore.Core.csproj" />
+    <ProjectReference Include="..\SentinelCore.Infrastructure\SentinelCore.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
   </ItemGroup>
 
 </Project>
