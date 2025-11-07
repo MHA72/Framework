@@ -14,6 +14,8 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 using (var scope = app.Services.CreateScope())

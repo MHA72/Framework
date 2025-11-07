@@ -10,6 +10,10 @@ public static class ServiceRegistration
         services.AddHttpContextAccessor();
         services.AddScoped<IAuditService, AuditService>();
         
+        services.AddSwaggerGen();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerDocumentation();
+        
         return services;
     }
 }
