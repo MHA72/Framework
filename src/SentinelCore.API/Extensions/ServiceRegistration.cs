@@ -1,7 +1,7 @@
-using SentinelCore.Application.Services;
-using SentinelCore.Application.Interfaces;
-using SentinelCore.Application.Interfaces.AuditLogContract;
 using SentinelCore.Application.Services.AuditLogService;
+using SentinelCore.Application.Services.SecurityService;
+using SentinelCore.Application.Interfaces.AuditLogContract;
+using SentinelCore.Application.Interfaces.SecurityContract;
 
 namespace SentinelCore.API.Extensions;
 
@@ -11,6 +11,7 @@ public static class ServiceRegistration
     {
         services.AddHttpContextAccessor();
         services.AddScoped<IAuditService, AuditService>();
+        services.AddSingleton<IPasswordHasher, PasswordHasher>();
         
         services.AddJwtAuthentication(configuration);
 

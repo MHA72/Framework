@@ -1,4 +1,3 @@
-using SentinelCore.Core.Models;
 using SentinelCore.Core.Entities.User;
 using SentinelCore.Core.Models.Request;
 using SentinelCore.Core.Models.Response;

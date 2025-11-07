@@ -2,9 +2,9 @@ namespace SentinelCore.Core.Entities.User;
 
 public class UserLogin : BaseEntity
 {
-    public Guid UserId { get; set; }
-    public User? User { get; set; }
-    public string? IpAddress { get; set; }
-    public string? UserAgent { get; set; }
-    public bool IsSuccessful { get; set; }
+    public Guid UserId { get; init; }
+    public User? User { get; init; }
+    public string? IpAddress { get; init; }
+    public string? UserAgent { get; init; }
+    public bool IsSuccessful { get; init; }
 }

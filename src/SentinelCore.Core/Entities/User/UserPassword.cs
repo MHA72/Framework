@@ -2,9 +2,9 @@ namespace SentinelCore.Core.Entities.User;
 
 public class UserPassword : BaseEntity
 {
-    public Guid UserId { get; set; }
-    public User? User { get; set; }
-    public bool IsActive { get; set; } = true;
-    public required string HashedPassword { get; set; }
-    public DateTime ExpireAt { get; set; } = DateTime.UtcNow.AddMonths(1);
+    public Guid UserId { get; init; }
+    public User? User { get; init; }
+    public bool IsActive { get; init; } = true;
+    public required string HashedPassword { get; init; }
+    public DateTime ExpireAt { get; init; } = DateTime.UtcNow.AddMonths(1);
 }

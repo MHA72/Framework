@@ -3,12 +3,17 @@ using SentinelCore.Core.Entities.User;
 using SentinelCore.Core.Models.Request;
 using SentinelCore.Infrastructure.Persistence;
 using SentinelCore.Application.Interfaces.UserContract;
+using SentinelCore.Application.Interfaces.SecurityContract;
 
 namespace SentinelCore.Application.Services.UserService;
 
-public class UserService(AppDbContext context) : IUserService
+public class UserService(AppDbContext context, IPasswordHasher passwordHasher) : IUserService
 {
-    public Task<User> GetByIdAsync(Guid id) => context.Users.FirstAsync(user => user.Id == id);
+    public Task<User> GetByIdAsync(Guid id) => 
+        context.Users
+            .Include(user => user.Roles)!
+        .ThenInclude(role => role.Role)
+        .FirstAsync(user => user.Id == id);
 
     public async Task RegisterAsync(RegisterRequest request)
     {
@@ -21,14 +26,53 @@ public class UserService(AppDbContext context) : IUserService
         var user = new User
         {
             Username = request.Username,
-            Password = request.Password,
+            Password = passwordHasher.Hash(request.Password),
             MobileNumber = request.MobileNumber
         };
 
         context.Users.Add(user);
         await context.SaveChangesAsync();
     }
+    
+    public Task<List<User>> GetAllAsync() => context.Users.ToListAsync();
 
     public Task<User> GetByUsernameAsync(string username) =>
-        context.Users.FirstAsync(user => user.Username == username);
+        context.Users
+            .Include(user => user.Roles)!
+            .ThenInclude(role => role.Role)
+            .FirstAsync(user => user.Username == username);
+
+    public async Task ChangePasswordAsync(Guid userId, string newPassword)
+    {
+        var user = await GetByIdAsync(userId);
+        await DeleteUserById(userId);
+        var request = new RegisterRequest(user.Username, user.MobileNumber, passwordHasher.Hash(newPassword));
+        await RegisterAsync(request);
+        await context.SaveChangesAsync();
+    }
+    public async Task DeleteUserById(Guid userId)
+    {
+        var user = await GetByIdAsync(userId);
+        user.IsActive = false;
+        user.IsDelete = true;
+        user.DeleteTime = DateTime.Now;
+        //Todo user.DeleteUserId = userId;
+        await context.SaveChangesAsync();
+    }
+    
+    public Task<List<UserRole>> GetUserRolesAsync(Guid userId) =>
+        context.Set<UserRole>().Include(ur => ur.Role).Where(ur => ur.UserId == userId).ToListAsync();
+
+    public async Task<List<Permission>> GetUserPermissionsAsync(Guid userId)
+    {
+        var roles = await GetUserRolesAsync(userId);
+        var roleIds = roles.Select(r => r.RoleId).ToList();
+
+        return await context.RolePermissions
+            .Include(rp => rp.Permission)
+            .Where(rp => roleIds.Contains(rp.RoleId))
+            .Select(rp => rp.Permission!)
+            .Distinct()
+            .ToListAsync();
+    }
 }
