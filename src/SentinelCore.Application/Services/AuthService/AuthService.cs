@@ -12,7 +12,8 @@ public class AuthService(IPasswordHasher hasher, IUserContract userContract, ITo
 {
     public Task<string> GenerateTokenAsync(User user)
     {
-        throw new NotImplementedException();
+        var token = tokenContract.CreateToken(user);
+        return Task.FromResult(token);
     }
 
     public async Task<AuthResponse> LoginAsync(LoginRequest request)
