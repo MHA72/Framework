@@ -2,7 +2,7 @@ using SentinelCore.Core.Entities.User;
 
 namespace SentinelCore.Application.Interfaces.PermissionContract;
 
-public interface IPermissionService
+public interface IPermissionContract
 {
     Task DeletePermission(Guid permissionId);
     Task<List<Permission>> GetAllPermission();

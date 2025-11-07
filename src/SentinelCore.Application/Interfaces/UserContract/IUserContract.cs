@@ -3,7 +3,7 @@ using SentinelCore.Core.Models.Request;
 
 namespace SentinelCore.Application.Interfaces.UserContract;
 
-public interface IUserService
+public interface IUserContract
 {
     Task<List<User>> GetAllAsync();
     Task DeleteUserById(Guid userId);

@@ -4,7 +4,7 @@ using SentinelCore.Core.Models.Response;
 
 namespace SentinelCore.Application.Interfaces.AuthContract;
 
-public interface IAuthService
+public interface IAuthContract
 {
     Task<string> GenerateTokenAsync(User user);
     Task<AuthResponse> LoginAsync(LoginRequest request);

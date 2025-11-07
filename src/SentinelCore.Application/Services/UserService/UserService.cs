@@ -7,7 +7,7 @@ using SentinelCore.Application.Interfaces.SecurityContract;
 
 namespace SentinelCore.Application.Services.UserService;
 
-public class UserContract(AppDbContext context, IPasswordHasher passwordHasher) : IUserContract
+public class UserService(AppDbContext context, IPasswordHasher passwordHasher) : IUserContract
 {
     public Task<User> GetByIdAsync(Guid id) => 
         context.Users

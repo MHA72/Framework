@@ -7,7 +7,8 @@ using SentinelCore.Application.Interfaces.SecurityContract;
 
 namespace SentinelCore.Application.Services.AuthService;
 
-public class AuthService(IPasswordHasher hasher, IUserContract userContract, ITokenContract tokenContract) : IAuthContract
+public class AuthService(IPasswordHasher hasher, IUserContract userContract, ITokenContract tokenContract)
+    : IAuthContract
 {
     public Task<string> GenerateTokenAsync(User user)
     {

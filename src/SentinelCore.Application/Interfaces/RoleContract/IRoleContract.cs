@@ -2,7 +2,7 @@ using SentinelCore.Core.Entities.User;
 
 namespace SentinelCore.Application.Interfaces.RoleContract;
 
-public interface IRoleService
+public interface IRoleContract
 {
     Task DeleteAsync(Guid roleId);
     Task<List<Role>> GetAllAsync();
