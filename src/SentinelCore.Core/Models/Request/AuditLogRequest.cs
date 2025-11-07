@@ -1,10 +1,8 @@
-namespace SentinelCore.Core.Models;
+namespace SentinelCore.Core.Models.Request;
 
-public class AuditLogRequest
-{
-    public string? EntityId { get; set; }
-    public Exception? Exception { get; set; }
-    public required string Message { get; set; }
-    public required string ActionType { get; set; }
-    public required string EntityName { get; set; }
-}
+public sealed record AuditLogRequest(
+    string? EntityId,
+    Exception? Exception,
+    string Message,
+    string ActionType,
+    string EntityName);
