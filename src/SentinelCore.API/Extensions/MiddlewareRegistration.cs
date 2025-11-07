@@ -9,8 +9,11 @@ public static class MiddlewareRegistration
         app.UseMiddleware<ExceptionLoggingMiddleware>();
         app.UseMiddleware<RequestLoggingMiddleware>();
         
+        app.UseSwagger();
+        app.UseSwaggerUI();
         app.UseAuthentication();
         app.UseAuthorization();
+        
         return app;
     }
 }

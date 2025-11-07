@@ -26,6 +26,8 @@ using (var scope = app.Services.CreateScope())
     db.Database.Migrate();
     DbInitializer.Seed(db);
 }
+
+app.MapControllers();
 app.UseCustomMiddlewares();
 app.UseHttpsRedirection();
 

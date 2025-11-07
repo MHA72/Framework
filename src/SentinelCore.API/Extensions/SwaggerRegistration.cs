@@ -1,6 +1,4 @@
-using System.Text;
 using Microsoft.OpenApi.Models;
-using Microsoft.IdentityModel.Tokens;
 
 namespace SentinelCore.API.Extensions;
 
@@ -10,22 +8,6 @@ public static class SwaggerRegistration
         IConfiguration configuration)
     {
         services.AddEndpointsApiExplorer();
-
-        services.AddAuthentication("Bearer")
-            .AddJwtBearer("Bearer", options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = false,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = configuration["Jwt:Issuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!)
-                    )
-                };
-            });
 
         services.AddSwaggerGen(c =>
         {
