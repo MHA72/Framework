@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SentinelCore.Application\SentinelCore.Application.csproj" />
     <ProjectReference Include="..\SentinelCore.Core\SentinelCore.Core.csproj" />
     <ProjectReference Include="..\SentinelCore.Infrastructure\SentinelCore.Infrastructure.csproj" />
