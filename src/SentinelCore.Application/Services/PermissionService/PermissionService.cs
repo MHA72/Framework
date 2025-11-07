@@ -5,7 +5,7 @@ using SentinelCore.Application.Interfaces.PermissionContract;
 
 namespace SentinelCore.Application.Services.PermissionService;
 
-public class PermissionService(AppDbContext context) : IPermissionService
+public class PermissionContract(AppDbContext context) : IPermissionContract
 {
     public async Task<Permission> CreatePermission(string key, string? description)
     {

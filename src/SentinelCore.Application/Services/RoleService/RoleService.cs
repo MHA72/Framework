@@ -5,7 +5,7 @@ using SentinelCore.Infrastructure.Persistence;
 
 namespace SentinelCore.Application.Services.RoleService;
 
-public class RoleService(AppDbContext context) : IRoleService
+public class RoleContract(AppDbContext context) : IRoleContract
 {
     public async Task<Role> CreateAsync(string name, string? description)
     {

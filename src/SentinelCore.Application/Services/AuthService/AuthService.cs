@@ -7,7 +7,7 @@ using SentinelCore.Application.Interfaces.SecurityContract;
 
 namespace SentinelCore.Application.Services.AuthService;
 
-public class AuthService(IPasswordHasher hasher, IUserService userService, ITokenService tokenService) : IAuthService
+public class AuthService(IPasswordHasher hasher, IUserContract userContract, ITokenContract tokenContract) : IAuthContract
 {
     public Task<string> GenerateTokenAsync(User user)
     {
@@ -16,12 +16,12 @@ public class AuthService(IPasswordHasher hasher, IUserService userService, IToke
 
     public async Task<AuthResponse> LoginAsync(LoginRequest request)
     {
-        var user = await userService.GetByUsernameAsync(request.Username);
+        var user = await userContract.GetByUsernameAsync(request.Username);
 
         if (!hasher.Verify(request.Password, user.Password))
             throw new UnauthorizedAccessException("نام کاربری یا رمز عبور اشتباه است.");
 
-        var token = tokenService.CreateToken(user);
+        var token = tokenContract.CreateToken(user);
 
         return new AuthResponse(token, user.Username, user.Roles!.First().ToString()!);
     }

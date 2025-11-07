@@ -8,7 +8,7 @@ using SentinelCore.Application.Interfaces.AuthContract;
 
 namespace SentinelCore.Application.Services.AuthService;
 
-public class TokenService(IConfiguration config) : ITokenService
+public class TokenContract(IConfiguration config) : ITokenContract
 {
     public string CreateToken(User user)
     {
