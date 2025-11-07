@@ -1,5 +1,6 @@
 using SentinelCore.Core.Models;
 using SentinelCore.Application.Interfaces;
+using SentinelCore.Application.Interfaces.AuditLog;
 
 namespace SentinelCore.API.Middlewares;
 
