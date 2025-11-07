@@ -1,25 +1,26 @@
-using SentinelCore.Application.Services.AuditLogService;
-using SentinelCore.Application.Services.SecurityService;
-using SentinelCore.Application.Interfaces.AuditLogContract;
-using SentinelCore.Application.Interfaces.SecurityContract;
-
 namespace SentinelCore.API.Extensions;
 
 public static class ServiceRegistration
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services,
+        IConfiguration configuration)
     {
         services.AddHttpContextAccessor();
+        services.AddScoped<IAuthContract, AuthService>();
+        services.AddScoped<IUserContract, UserService>();
+        services.AddScoped<IRoleContract, RoleService>();
         services.AddScoped<IAuditService, AuditService>();
+        services.AddScoped<IPermissionContract, PermissionService>();
+
         services.AddSingleton<IPasswordHasher, PasswordHasher>();
-        
+
         services.AddJwtAuthentication(configuration);
 
-        
         services.AddSwaggerGen();
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerDocumentation();
-        
+        services.AddSwaggerDocumentation(configuration);
+        services.AddAuthorization();
+
         return services;
     }
 }
