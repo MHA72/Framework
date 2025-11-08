@@ -7,6 +7,14 @@ namespace SentinelCore.Application.Services.PermissionService;
 
 public class PermissionService(AppDbContext context) : IPermissionContract
 {
+    public async Task<bool> HasPermissionAsync(Guid userId, string permissionKey)
+    {
+        return await context.UserRoles
+            .Where(ur => ur.UserId == userId)
+            .SelectMany(ur => ur.Role!.Permissions!)
+            .AnyAsync(rp => rp.Permission!.Key == permissionKey);
+    }
+
     public async Task<Permission> CreatePermission(string key, string? description)
     {
         var permission = new Permission { Id = Guid.NewGuid(), Key = key, Description = description };
