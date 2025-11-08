@@ -8,7 +8,7 @@ public class User : BaseEntity
     public required string Username { get; init; }
     public required string Password { get; init; }
     public required string MobileNumber { get; init; }
-    public ICollection<UserRole>? Roles { get; init; }
-    public ICollection<UserLogin>? Logins { get; init; }
-    public ICollection<UserPassword>? Passwords { get; init; }
+    public ICollection<UserRole>? Roles { get; set; }
+    public ICollection<UserLogin>? Logins { get; set; }
+    public ICollection<UserPassword>? Passwords { get; set; }
 }

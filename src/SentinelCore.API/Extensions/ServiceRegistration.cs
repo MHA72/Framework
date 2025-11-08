@@ -1,5 +1,11 @@
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using SentinelCore.Application.Contracts.AuditLogContract;
+using SentinelCore.Application.Contracts.AuthContract;
+using SentinelCore.Application.Contracts.PermissionContract;
+using SentinelCore.Application.Contracts.RoleContract;
+using SentinelCore.Application.Contracts.SecurityContract;
+using SentinelCore.Application.Contracts.UserContract;
 
 namespace SentinelCore.API.Extensions;
 
@@ -12,7 +18,7 @@ public static class ServiceRegistration
         services.AddScoped<IAuthContract, AuthService>();
         services.AddScoped<IUserContract, UserService>();
         services.AddScoped<IRoleContract, RoleService>();
-        services.AddScoped<IAuditService, AuditService>();
+        services.AddScoped<IAuditContract, AuditContract>();
         services.AddScoped<ITokenContract, TokenService>();
         services.AddScoped<IPermissionContract, PermissionService>();
 

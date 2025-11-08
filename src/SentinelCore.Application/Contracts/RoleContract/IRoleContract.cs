@@ -1,6 +1,6 @@
 using SentinelCore.Core.Entities.User;
 
-namespace SentinelCore.Application.Interfaces.RoleContract;
+namespace SentinelCore.Application.Contracts.RoleContract;
 
 public interface IRoleContract
 {

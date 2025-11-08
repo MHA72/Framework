@@ -1,6 +1,6 @@
 using System.Text;
 using System.Security.Cryptography;
-using SentinelCore.Application.Interfaces.SecurityContract;
+using SentinelCore.Application.Contracts.SecurityContract;
 
 namespace SentinelCore.Application.Services.SecurityService;
 

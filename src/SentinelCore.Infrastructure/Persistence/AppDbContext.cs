@@ -41,14 +41,6 @@ public class AppDbContext : DbContext
 
                 method.Invoke(null, [modelBuilder]);
             }
-
-            foreach (var property in entityType.GetProperties()
-                         .Where(p => p.ClrType == typeof(DateTime) || p.ClrType == typeof(DateTime?)))
-            {
-                property.SetValueConverter(new ValueConverter<DateTime, DateTime>(
-                    v => DateTime.SpecifyKind(v, DateTimeKind.Utc),
-                    v => DateTime.SpecifyKind(v, DateTimeKind.Utc)));
-            }
         }
     }
 

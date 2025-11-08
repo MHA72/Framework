@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SentinelCore.Application.Contracts.RoleContract;
 using SentinelCore.Core.Models.Request;
 
 namespace SentinelCore.API.Controllers;

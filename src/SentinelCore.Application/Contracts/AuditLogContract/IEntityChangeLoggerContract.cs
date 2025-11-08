@@ -1,6 +1,6 @@
-namespace SentinelCore.Application.Interfaces.AuditLogContract;
+namespace SentinelCore.Application.Contracts.AuditLogContract;
 
-public interface IEntityChangeLogger
+public interface IEntityChangeLoggerContract
 {
     Task LogCreateAsync<T>(T entity) where T : class;
     Task LogUpdateAsync<T>(T original, T updated) where T : class;

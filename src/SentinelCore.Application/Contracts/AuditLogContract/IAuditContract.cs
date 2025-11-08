@@ -1,8 +1,8 @@
 using SentinelCore.Core.Models.Request;
 
-namespace SentinelCore.Application.Interfaces.AuditLogContract;
+namespace SentinelCore.Application.Contracts.AuditLogContract;
 
-public interface IAuditService
+public interface IAuditContract
 {
     Task LogAsync(AuditLogRequest auditLogRequest);
 }

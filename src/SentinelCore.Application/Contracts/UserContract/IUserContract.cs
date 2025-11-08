@@ -1,7 +1,7 @@
 using SentinelCore.Core.Entities.User;
 using SentinelCore.Core.Models.Request;
 
-namespace SentinelCore.Application.Interfaces.UserContract;
+namespace SentinelCore.Application.Contracts.UserContract;
 
 public interface IUserContract
 {

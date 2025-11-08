@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using SentinelCore.Application.Contracts.PermissionContract;
 using SentinelCore.Core.Entities.User;
 using SentinelCore.Infrastructure.Persistence;
-using SentinelCore.Application.Interfaces.PermissionContract;
 
 namespace SentinelCore.Application.Services.PermissionService;
 

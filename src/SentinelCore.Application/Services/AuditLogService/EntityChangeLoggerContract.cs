@@ -1,9 +1,9 @@
+using SentinelCore.Application.Contracts.AuditLogContract;
 using SentinelCore.Core.Models.Request;
-using SentinelCore.Application.Interfaces.AuditLogContract;
 
 namespace SentinelCore.Application.Services.AuditLogService;
 
-public class EntityChangeLogger(IAuditService audit) : IEntityChangeLogger
+public class EntityChangeLoggerContract(IAuditContract audit) : IEntityChangeLoggerContract
 {
     public async Task LogCreateAsync<T>(T entity) where T : class =>
         await audit.LogAsync(new AuditLogRequest(GetEntityId(entity), null,

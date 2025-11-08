@@ -1,12 +1,6 @@
 global using SentinelCore.Application.Services.AuthService;
 global using SentinelCore.Application.Services.RoleService;
 global using SentinelCore.Application.Services.UserService;
-global using SentinelCore.Application.Interfaces.AuthContract;
-global using SentinelCore.Application.Interfaces.RoleContract;
-global using SentinelCore.Application.Interfaces.UserContract;
 global using SentinelCore.Application.Services.AuditLogService;
 global using SentinelCore.Application.Services.SecurityService;
 global using SentinelCore.Application.Services.PermissionService;
-global using SentinelCore.Application.Interfaces.AuditLogContract;
-global using SentinelCore.Application.Interfaces.SecurityContract;
-global using SentinelCore.Application.Interfaces.PermissionContract;

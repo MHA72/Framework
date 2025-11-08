@@ -1,11 +1,11 @@
+using SentinelCore.Application.Contracts.AuditLogContract;
 using SentinelCore.Core.Models.Request;
-using SentinelCore.Application.Interfaces.AuditLogContract;
 
 namespace SentinelCore.API.Middlewares;
 
 public class ExceptionLoggingMiddleware(RequestDelegate next)
 {
-    public async Task InvokeAsync(HttpContext context, IAuditService audit)
+    public async Task InvokeAsync(HttpContext context, IAuditContract audit)
     {
         try
         {

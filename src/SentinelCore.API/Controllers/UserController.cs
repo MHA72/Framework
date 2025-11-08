@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SentinelCore.Application.Contracts.UserContract;
 
 namespace SentinelCore.API.Controllers;
 

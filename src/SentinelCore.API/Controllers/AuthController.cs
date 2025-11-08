@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using SentinelCore.Application.Contracts.AuthContract;
+using SentinelCore.Application.Contracts.UserContract;
 using SentinelCore.Core.Models.Request;
 
 namespace SentinelCore.API.Controllers;

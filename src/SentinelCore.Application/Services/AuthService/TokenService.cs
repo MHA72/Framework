@@ -4,7 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using SentinelCore.Core.Entities.User;
 using Microsoft.Extensions.Configuration;
-using SentinelCore.Application.Interfaces.AuthContract;
+using SentinelCore.Application.Contracts.AuthContract;
 
 namespace SentinelCore.Application.Services.AuthService;
 
@@ -30,7 +30,7 @@ public class TokenService(IConfiguration config) : ITokenContract
         var token = new JwtSecurityToken(
             issuer: config["Jwt:Issuer"],
             claims: claims,
-            expires: DateTime.UtcNow.AddHours(2),
+            expires: DateTime.Now.AddHours(2),
             signingCredentials: credential
         );
 

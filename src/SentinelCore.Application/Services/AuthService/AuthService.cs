@@ -1,9 +1,9 @@
+using SentinelCore.Application.Contracts.AuthContract;
+using SentinelCore.Application.Contracts.SecurityContract;
+using SentinelCore.Application.Contracts.UserContract;
 using SentinelCore.Core.Entities.User;
 using SentinelCore.Core.Models.Request;
 using SentinelCore.Core.Models.Response;
-using SentinelCore.Application.Interfaces.UserContract;
-using SentinelCore.Application.Interfaces.AuthContract;
-using SentinelCore.Application.Interfaces.SecurityContract;
 
 namespace SentinelCore.Application.Services.AuthService;
 

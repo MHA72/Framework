@@ -1,4 +1,4 @@
-namespace SentinelCore.Application.Interfaces.SecurityContract;
+namespace SentinelCore.Application.Contracts.SecurityContract;
 
 public interface IPasswordHasher
 {

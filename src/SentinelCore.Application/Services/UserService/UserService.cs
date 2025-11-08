@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using SentinelCore.Application.Contracts.SecurityContract;
+using SentinelCore.Application.Contracts.UserContract;
 using SentinelCore.Core.Entities.User;
 using SentinelCore.Core.Models.Request;
 using SentinelCore.Infrastructure.Persistence;
-using SentinelCore.Application.Interfaces.UserContract;
-using SentinelCore.Application.Interfaces.SecurityContract;
 
 namespace SentinelCore.Application.Services.UserService;
 

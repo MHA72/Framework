@@ -6,5 +6,5 @@ public class UserPassword : BaseEntity
     public User? User { get; init; }
     public bool IsActive { get; init; } = true;
     public required string HashedPassword { get; init; }
-    public DateTime ExpireAt { get; init; } = DateTime.UtcNow.AddMonths(1);
+    public DateTime ExpireAt { get; init; } = DateTime.Now.AddMonths(1);
 }

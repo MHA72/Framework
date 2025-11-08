@@ -1,6 +1,6 @@
 using SentinelCore.Core.Entities.User;
 
-namespace SentinelCore.Application.Interfaces.PermissionContract;
+namespace SentinelCore.Application.Contracts.PermissionContract;
 
 public interface IPermissionContract
 {

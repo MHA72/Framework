@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using SentinelCore.Application.Interfaces.RoleContract;
+using SentinelCore.Application.Contracts.RoleContract;
 using SentinelCore.Core.Entities.User;
 using SentinelCore.Infrastructure.Persistence;
 

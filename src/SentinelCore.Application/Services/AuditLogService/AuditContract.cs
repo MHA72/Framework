@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Http;
+using SentinelCore.Application.Contracts.AuditLogContract;
 using SentinelCore.Core.Models.Request;
 using SentinelCore.Infrastructure.Persistence;
-using SentinelCore.Application.Interfaces.AuditLogContract;
 
 namespace SentinelCore.Application.Services.AuditLogService;
 
-public class AuditService(AppDbContext context, IHttpContextAccessor http) : IAuditService
+public class AuditContract(AppDbContext context, IHttpContextAccessor http) : IAuditContract
 {
     public async Task LogAsync(AuditLogRequest auditLogRequest)
     {
@@ -18,8 +18,7 @@ public class AuditService(AppDbContext context, IHttpContextAccessor http) : IAu
             StackTrace = auditLogRequest.Exception?.ToString(),
             IpAddress = http.HttpContext?.Connection?.RemoteIpAddress?.ToString(),
             UserAgent = http.HttpContext?.Request?.Headers["User-Agent"],
-            ActorUserId = GetCurrentUserId(),
-            CreateTime = DateTime.UtcNow
+            ActorUserId = GetCurrentUserId()
         };
 
         context.AuditLogs.Add(log);

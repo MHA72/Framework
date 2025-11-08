@@ -25,7 +25,7 @@ public static class DbInitializer
             User = adminUser,
             HashedPassword = Hash("12345"),
             IsActive = true,
-            ExpireAt = DateTime.UtcNow.AddMonths(1)
+            ExpireAt = DateTime.Now.AddMonths(1)
         };
 
         context.Roles.Add(adminRole);
